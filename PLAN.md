@@ -177,27 +177,33 @@ ai-timeline/
 
 ## Phases
 
-### Phase 1 — Ship It
-- [ ] Rust CLI: parse markdown files, generate HTML
-- [ ] HTML template with semantic timeline markup
-- [ ] CSS timeline layout with alternating nodes
-- [ ] Color system for importance levels
-- [ ] Scroll-reveal animations
-- [ ] Tab filtering (vanilla JS)
-- [ ] Seed with ~20 real news entries across companies
-- [ ] Responsive mobile layout
-- [ ] `serve` command for local preview
+### Phase 1 — Ship It ✅
+- [x] Rust CLI: parse markdown files, generate HTML
+- [x] HTML template with semantic timeline markup
+- [x] CSS timeline layout with alternating nodes
+- [x] Color system for importance levels (purple/red/orange/blue/gray)
+- [x] Scroll-reveal animations (IntersectionObserver)
+- [x] Company tab filtering (vanilla JS)
+- [x] Importance level filtering (All / Medium+ / High+ / Critical+ / Inflection)
+- [x] 140 news entries across 7 companies, balanced 2015–2026
+- [x] Responsive mobile layout
+- [x] `serve` command for local preview
+- [x] GitHub Actions: build + deploy to Pages on push
+- [x] Dark theme
 
 ### Phase 2 — Polish
-- [ ] `new` command to scaffold entries
-- [ ] Smooth tab transitions
+- [ ] `new` command to scaffold entries with date/importance/headline prompts
+- [ ] Smooth tab/filter transitions (animate node show/hide)
 - [ ] Search/filter by keyword
-- [ ] Date range filtering
+- [ ] Date range filtering (year picker or slider)
 - [ ] Light/dark mode toggle
-- [ ] Permalink to specific nodes
+- [ ] Permalink to specific nodes (anchor links)
+- [ ] Source URLs on each node (link to original article/announcement)
+- [ ] README with setup/usage instructions
 
 ### Phase 3 — Maybe
-- [ ] GitHub Actions: build + deploy to Pages on push
 - [ ] RSS feed generation
-- [ ] Contributor submissions via PR
-- [ ] Embed links / source URLs on each node
+- [ ] Contributor submissions via PR template
+- [ ] Node expand/collapse for longer descriptions
+- [ ] Year markers / section headers on the timeline
+- [ ] Stats summary at top (total events, events per company, date range)
