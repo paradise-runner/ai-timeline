@@ -3,95 +3,63 @@
 ---
 date: 2023-07-12
 importance: high
-headline: Elon Musk officially announces xAI
+headline: xAI founded by Elon Musk
 ---
 
-Elon Musk announces the formation of xAI, an AI company with the stated goal of "understanding the true nature of the universe." Founded as a public-benefit corporation with key recruits from DeepMind and other labs.
+Elon Musk founds xAI with a team of former researchers from DeepMind, OpenAI, and other top labs. The stated mission is to "understand the true nature of the universe."
 
 ---
-date: 2023-11-03
+date: 2023-11-04
 importance: high
-headline: Grok 1 chatbot launched on X
+headline: Grok-1 launched on X platform
 ---
 
-xAI releases Grok 1, its first chatbot integrated into the X (formerly Twitter) platform with real-time access to posts. Positioned as an irreverent, less filtered alternative to ChatGPT.
+xAI releases Grok-1, a conversational AI with real-time access to X (Twitter) posts and a "fun mode" with sarcastic personality. It's available exclusively to X Premium+ subscribers.
 
 ---
 date: 2024-03-17
 importance: medium
-headline: Grok-1 open-sourced under Apache 2.0
+headline: Grok-1 open-sourced with 314B parameters
 ---
 
-xAI open-sources Grok-1's 314B parameter mixture-of-experts weights under the Apache 2.0 license, making it one of the largest openly available models at the time.
+xAI open-sources the Grok-1 weights and architecture under Apache 2.0. At 314 billion parameters using mixture-of-experts, it's one of the largest open-weight models.
 
 ---
 date: 2024-05-26
 importance: high
-headline: xAI raises $6B in Series B funding
+headline: xAI raises $6B Series B
 ---
 
-xAI secures $6 billion backed by Andreessen Horowitz, Lightspeed, Sequoia Capital, and others to scale its AI infrastructure and compete with OpenAI and Google.
-
----
-date: 2024-06-01
-importance: high
-headline: Colossus supercomputer construction begins in Memphis
----
-
-xAI begins building Colossus, the world's largest AI training supercomputer, in Memphis, Tennessee. The 100,000+ GPU facility aims to be operational by end of year.
+xAI closes a $6 billion Series B funding round at a $24 billion valuation. The capital is earmarked for building a massive GPU supercluster in Memphis.
 
 ---
 date: 2024-08-13
 importance: high
-headline: Grok-2 and Grok-2 mini released
+headline: Grok-2 launched with image generation
 ---
 
-xAI launches Grok-2 and a smaller Grok-2 mini model with significantly improved reasoning and coding capabilities, integrated into the X platform.
+xAI releases Grok-2 and Grok-2 mini with significantly improved reasoning and a built-in image generation capability powered by FLUX. It approaches frontier model performance.
 
 ---
-date: 2024-12-01
+date: 2024-12-09
+importance: medium
+headline: Colossus — world's largest AI training cluster
+---
+
+xAI's Colossus supercomputer in Memphis begins operations with 100,000 Nvidia H100 GPUs, making it the world's largest known AI training cluster. Plans call for doubling to 200,000.
+
+---
+date: 2024-12-24
 importance: high
-headline: Colossus goes fully operational with 100K+ GPUs
+headline: Grok-2 free for all X users
 ---
 
-After a rapid 122-day construction, xAI's Colossus supercomputer in Memphis becomes fully operational, establishing the world's largest AI training facility.
+xAI makes Grok-2 available for free to all X users, significantly expanding its reach. The move intensifies competition in the consumer AI chatbot market.
 
 ---
-date: 2024-12-23
+date: 2025-02-07
 importance: high
-headline: xAI raises additional $6B, totaling $12B+ in funding
+headline: Grok 3 released with reasoning capabilities
 ---
 
-xAI closes another $6 billion round backed by Fidelity, BlackRock, and Sequoia Capital, bringing total funding to over $12 billion.
-
----
-date: 2025-02-17
-importance: high
-headline: Grok 3 released with competitive benchmark scores
----
-
-xAI launches Grok 3, trained on the Colossus supercluster, with significantly improved reasoning and a "Think" mode. Features real-time X integration and competitive scores against GPT-4.5 and Claude.
-
----
-date: 2025-03-28
-importance: critical
-headline: xAI acquires X (Twitter) for $33B
----
-
-Elon Musk announces xAI's acquisition of X Corp in an all-stock transaction valuing X at $33B ($45B including debt). xAI and X merge into X.AI Holdings Corp, combining AI and social media.
-
----
-date: 2025-07-01
-importance: high
-headline: xAI raises $10B in debt and equity
----
-
-Morgan Stanley raises $5 billion in debt for xAI while the company separately raises $5 billion in equity, with SpaceX investing $2 billion. Total fundraising exceeds $22 billion.
-
----
-date: 2025-11-17
-importance: high
-headline: Grok 4.1 and Grok 4.1 Thinking released
----
-
-xAI releases Grok 4.1 as its latest model generation with improved reasoning through a dedicated "Thinking" variant, competing with OpenAI's o3 and Claude Opus 4.
+xAI launches Grok 3, trained on the Colossus supercluster, claiming top performance on math and science benchmarks. It includes a "think" mode for step-by-step reasoning.

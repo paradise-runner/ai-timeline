@@ -1,97 +1,121 @@
-# Meta
+# Meta AI
 
 ---
-date: 2018-09-21
+date: 2013-12-09
+importance: high
+headline: Facebook AI Research (FAIR) founded
+---
+
+Facebook establishes FAIR under Yann LeCun, one of the "godfathers of deep learning." The lab becomes a prolific source of open AI research and foundational contributions.
+
+---
+date: 2017-01-18
 importance: medium
-headline: Facebook AI Research (FAIR) releases PyTorch 1.0
+headline: PyTorch 0.1 released
 ---
 
-Facebook's AI Research lab releases PyTorch 1.0, which rapidly becomes the dominant deep learning framework for researchers thanks to its dynamic computation graphs and Pythonic design. It overtakes TensorFlow in research citations by 2019.
+Facebook releases PyTorch, a dynamic deep learning framework built on Torch. Its Pythonic interface and dynamic computation graphs make it the preferred framework for AI researchers.
+
+---
+date: 2018-04-04
+importance: medium
+headline: PyTorch 1.0 preview merges research and production
+---
+
+PyTorch 1.0 merges Caffe2 and PyTorch to support both research flexibility and production deployment. It accelerates PyTorch's adoption beyond academia into industry.
+
+---
+date: 2019-01-22
+importance: high
+headline: RoBERTa — optimized BERT training
+---
+
+Facebook AI releases RoBERTa, showing that BERT was significantly undertrained. With optimized training, RoBERTa achieves state-of-the-art results across NLP benchmarks.
+
+---
+date: 2020-05-29
+importance: medium
+headline: Blender chatbot released
+---
+
+Facebook releases BlenderBot, the first chatbot to combine personality, knowledge, and empathy in conversation. It represents a major step toward human-like dialogue agents.
+
+---
+date: 2022-05-03
+importance: medium
+headline: OPT-175B — open-source large language model
+---
+
+Meta releases OPT-175B, a large language model matching GPT-3's scale, fully open-sourced for research. It's one of the first open attempts to replicate proprietary LLM capabilities.
+
+---
+date: 2022-09-29
+importance: medium
+headline: Make-A-Video text-to-video generation
+---
+
+Meta announces Make-A-Video, which generates short videos from text descriptions. It demonstrates Meta's investment in generative AI beyond language models.
 
 ---
 date: 2023-02-24
 importance: critical
-headline: LLaMA released — Meta enters the open-weight LLM race
+headline: LLaMA released — open-weights revolution begins
 ---
 
-Meta releases LLaMA, its first large language model family in 7B to 65B parameter sizes. Though restricted to researchers, the weights leak publicly via torrent, inadvertently kickstarting the open-source LLM revolution.
+Meta releases LLaMA (Large Language Model Meta AI) in 7B to 65B parameter sizes. The models leak publicly and ignite an explosion of open-source AI development.
 
 ---
 date: 2023-07-18
-importance: high
-headline: Llama 2 released with commercial license
+importance: critical
+headline: Llama 2 released as fully open-source
 ---
 
-Meta releases Llama 2 in partnership with Microsoft, available in 7B, 13B, and 70B sizes with a permissive commercial license. This deliberate open release establishes Meta's strategy of commoditizing AI models.
+Meta releases Llama 2 with a permissive commercial license, available in 7B, 13B, and 70B sizes. The decision to go open-source reshapes the competitive landscape and challenges closed-source labs.
+
+---
+date: 2023-09-27
+importance: high
+headline: Meta AI assistant with Llama powers
+---
+
+Meta launches Meta AI, a conversational assistant powered by Llama, integrated across WhatsApp, Instagram, and Messenger. It reaches billions of potential users across Meta's platforms.
+
+---
+date: 2023-12-01
+importance: medium
+headline: Seamless communication models released
+---
+
+Meta releases the Seamless suite of models for real-time multilingual speech translation. The system handles streaming translation across nearly 100 languages.
 
 ---
 date: 2024-04-18
 importance: critical
-headline: Llama 3 released as open-weight models
+headline: Llama 3 released in 8B and 70B
 ---
 
-Meta launches Llama 3 in 8B and 70B parameter sizes, outperforming Gemini Pro 1.5 and Claude 3 Sonnet on most benchmarks. Trained on 15 trillion tokens, it establishes Meta as the leader in open-weight AI.
-
----
-date: 2024-04-18
-importance: high
-headline: Meta AI assistant launches across platforms
----
-
-Alongside Llama 3, Meta rolls out Meta AI, an AI assistant integrated into Facebook, WhatsApp, Instagram, and a dedicated website, reaching billions of potential users.
+Meta releases Llama 3 with significantly improved performance, claiming the best open-source models at their sizes. The 8B model rivals much larger previous-generation models.
 
 ---
 date: 2024-07-23
 importance: high
-headline: Llama 3.1 405B released — largest open model
+headline: Llama 3.1 with 405B parameter model
 ---
 
-Meta releases Llama 3.1 with a massive 405B parameter model, the largest open-weight model at the time. It competes with frontier closed models and comes with a 128K context window.
+Meta releases Llama 3.1 including a 405B parameter model that approaches GPT-4 class performance. It's the largest openly available model and a milestone for open-source AI.
 
 ---
 date: 2024-09-25
 importance: medium
-headline: Meta launches Movie Gen for AI video
+headline: Meta unveils Orion AR glasses prototype
 ---
 
-Meta unveils Movie Gen, a foundation model for generating and editing video and audio from text prompts. Demonstrates high-quality video generation with personalization capabilities.
-
----
-date: 2024-12-06
-importance: medium
-headline: Llama 3.3 70B released
----
-
-Meta releases Llama 3.3 with a 70B parameter model that matches the performance of the much larger 405B model, improving efficiency for open-source deployments.
+Meta reveals Orion, its most advanced AR glasses prototype, featuring a holographic display and on-device AI assistant. It signals Meta's vision for AI-powered augmented reality.
 
 ---
 date: 2025-01-29
 importance: high
-headline: Mark Zuckerberg announces $65B AI infrastructure investment
+headline: Llama 4 training underway with massive compute
 ---
 
-Meta CEO Mark Zuckerberg reveals plans to spend approximately $65 billion on AI infrastructure in 2025, including building a massive data center and reaching 1.3 million GPUs.
-
----
-date: 2025-04-05
-importance: critical
-headline: Llama 4 Scout and Maverick released
----
-
-Meta releases Llama 4 with Scout (17B active / 109B total) and Maverick (17B active / 400B total) mixture-of-experts models. Both use a novel architecture and are open-weight for research and commercial use.
-
----
-date: 2025-06-01
-importance: high
-headline: Meta AI integrated into Ray-Ban smart glasses
----
-
-Real-time multimodal AI assistant available through Meta's smart glasses, enabling visual question answering and live translation in everyday use.
-
----
-date: 2025-09-25
-importance: medium
-headline: Meta launches AI Studio for custom AI characters
----
-
-Meta rolls out AI Studio, allowing businesses and creators to build custom AI agents powered by Llama models across Meta's family of apps.
+Meta confirms Llama 4 is in training on a cluster of over 100,000 GPUs. Mark Zuckerberg announces plans to invest $60-65B in AI infrastructure during 2025.

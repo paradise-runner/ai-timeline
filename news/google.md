@@ -1,153 +1,121 @@
-# Google
+# Google DeepMind
+
+---
+date: 2014-01-26
+importance: critical
+headline: Google acquires DeepMind for ~$500M
+---
+
+Google purchases London-based AI lab DeepMind for approximately $500 million. The acquisition brings world-class reinforcement learning researchers into Google and signals big tech's AI ambitions.
 
 ---
 date: 2015-11-09
 importance: high
-headline: TensorFlow open-sourced by Google Brain
+headline: TensorFlow open-sourced
 ---
 
-Google open-sources TensorFlow, its machine learning framework, which becomes the dominant deep learning platform for years. It accelerates AI research globally by making Google's internal tools freely available.
+Google open-sources TensorFlow, its machine learning framework. It quickly becomes the most widely used deep learning library, accelerating AI research worldwide.
 
 ---
 date: 2016-03-15
 importance: inflection
-headline: AlphaGo defeats Lee Sedol 4-1 in Go
+headline: AlphaGo defeats Lee Sedol at Go
 ---
 
-Google DeepMind's AlphaGo defeats world champion Lee Sedol in a landmark five-game Go match in Seoul. The victory is widely seen as a watershed moment for AI, demonstrating superhuman performance in a game thought to be decades away from AI mastery.
+DeepMind's AlphaGo defeats world champion Lee Sedol 4-1 in a historic five-game match. The victory demonstrates that AI can master complex strategy games previously thought to be decades away.
 
 ---
 date: 2017-06-12
 importance: inflection
-headline: "Attention Is All You Need" — Transformer architecture published
+headline: "Attention Is All You Need" — the Transformer paper
 ---
 
-Google researchers publish the Transformer paper, introducing the self-attention mechanism that replaces recurrence and convolution. This architecture becomes the foundation for virtually all modern AI models including GPT, BERT, and Gemini.
-
----
-date: 2017-12-01
-importance: high
-headline: AlphaZero masters chess, shogi, and Go from scratch
----
-
-DeepMind's AlphaZero achieves superhuman performance in chess, shogi, and Go after just hours of self-play with no human knowledge, demonstrating the power of general reinforcement learning.
+Google researchers publish the Transformer architecture, introducing self-attention mechanisms that replace recurrence. This paper becomes the foundation of virtually all modern large language models.
 
 ---
 date: 2018-10-11
+importance: critical
+headline: BERT revolutionizes NLP
+---
+
+Google releases BERT (Bidirectional Encoder Representations from Transformers), which achieves state-of-the-art results across 11 NLP tasks. It transforms how language understanding is approached.
+
+---
+date: 2020-07-20
 importance: high
-headline: Google releases BERT language model
+headline: AlphaFold 2 solves protein folding
 ---
 
-Google publishes BERT (Bidirectional Encoder Representations from Transformers), which revolutionizes NLP by pre-training bidirectional representations. It becomes the backbone of Google Search and sets new benchmarks across language tasks.
+DeepMind's AlphaFold 2 achieves breakthrough accuracy in predicting protein structures at CASP14. It's hailed as one of the most significant scientific advances in decades.
 
 ---
-date: 2020-07-15
+date: 2021-05-18
 importance: high
-headline: AlphaFold solves protein structure prediction
+headline: LaMDA conversational model announced
 ---
 
-DeepMind's AlphaFold achieves breakthrough accuracy in predicting protein 3D structures at CASP14, solving a 50-year grand challenge in biology. The technology later predicts structures for nearly all known proteins.
+Google unveils LaMDA (Language Model for Dialogue Applications) at I/O 2021. The model is specifically designed for open-ended conversation and creative applications.
 
 ---
-date: 2023-04-14
+date: 2022-04-04
 importance: high
+headline: PaLM — 540B parameter language model
+---
+
+Google releases PaLM (Pathways Language Model) with 540 billion parameters. It demonstrates breakthrough performance on reasoning tasks and few-shot learning benchmarks.
+
+---
+date: 2023-02-06
+importance: high
+headline: Bard AI chatbot launched
+---
+
+Google rushes Bard to market as a response to ChatGPT, using a lightweight version of LaMDA. A factual error in the launch demo wipes $100 billion from Alphabet's market cap.
+
+---
+date: 2023-04-20
+importance: medium
 headline: Google Brain and DeepMind merge into Google DeepMind
 ---
 
-Google merges its two premier AI research groups — Google Brain and DeepMind — into a single unit called Google DeepMind, led by Demis Hassabis. The consolidation is a response to competitive pressure from OpenAI's ChatGPT.
+Google merges its two main AI research groups — Google Brain and DeepMind — into a single unit called Google DeepMind, led by Demis Hassabis. The consolidation aims to accelerate AI progress.
 
 ---
 date: 2023-12-06
 importance: critical
-headline: Gemini 1.0 announced — Google's frontier multimodal model
+headline: Gemini 1.0 launched
 ---
 
-Google announces Gemini 1.0 in Ultra, Pro, and Nano sizes. Gemini Ultra is the first model to exceed human-expert performance on the MMLU benchmark (90%), positioning it as Google's answer to GPT-4.
+Google launches Gemini, its most capable model family, in Ultra, Pro, and Nano sizes. Gemini Ultra claims to exceed GPT-4 on multiple benchmarks and is natively multimodal.
 
 ---
-date: 2024-02-08
+date: 2024-02-15
 importance: high
-headline: Gemini brand unification and 1.5 launch
+headline: Gemini 1.5 Pro with 1M token context
 ---
 
-Google unifies Bard and Duet AI under the Gemini brand and launches Gemini 1.5 with a groundbreaking 1-million-token context window using mixture-of-experts architecture. Gemini Advanced launches as a paid tier.
-
----
-date: 2024-02-21
-importance: medium
-headline: Google releases Gemma open-source models
----
-
-Google debuts Gemma, a family of free and open-source lightweight LLMs, reversing its longstanding practice of keeping AI models proprietary. Available in 2B and 7B parameter sizes.
+Google releases Gemini 1.5 Pro with a groundbreaking 1 million token context window. It can process entire codebases, long videos, and books in a single prompt.
 
 ---
 date: 2024-05-14
 importance: high
-headline: Google I/O 2024 showcases Gemini across products
+headline: Project Astra and Gemini integrations at I/O
 ---
 
-At Google I/O, Google announces Gemini integration across Search, Workspace, and Android. Gemini 1.5 Flash debuts as a faster, cheaper model, and Project Astra is previewed as a real-time AI assistant.
-
----
-date: 2024-10-08
-importance: medium
-headline: Demis Hassabis wins Nobel Prize in Chemistry
----
-
-Google DeepMind CEO Demis Hassabis and colleague John Jumper share the Nobel Prize in Chemistry for AlphaFold's breakthrough in protein structure prediction.
+Google I/O showcases Project Astra, a real-time multimodal AI agent, and deep Gemini integration across Search, Gmail, and Workspace. AI Overviews roll out in Google Search.
 
 ---
 date: 2024-12-11
 importance: critical
-headline: Gemini 2.0 Flash announced with agentic capabilities
+headline: Gemini 2.0 Flash released
 ---
 
-Google announces Gemini 2.0 Flash Experimental with native tool use, multimodal generation, spatial understanding, and "Jules" AI coding agent for GitHub. Marks Google's push into agentic AI.
+Google launches Gemini 2.0 Flash with native multimodal output including images, audio, and tool use. It marks the beginning of Google's "agentic era" for AI.
 
 ---
 date: 2025-01-30
 importance: medium
-headline: Gemini 2.0 Flash becomes default model
+headline: Gemini 2.0 Pro experimental release
 ---
 
-Gemini 2.0 Flash replaces 1.5 Flash as the default Gemini model, followed by Gemini 2.0 Pro release on February 5.
-
----
-date: 2025-03-25
-importance: high
-headline: Gemini 2.5 Pro released as thinking model
----
-
-Google launches Gemini 2.5 Pro Experimental, described as its most intelligent model yet with enhanced reasoning, chain-of-thought capabilities, and a 1-million-token context window.
-
----
-date: 2025-05-20
-importance: high
-headline: Google I/O 2025 — Gemini 2.5 Flash and Deep Think
----
-
-At Google I/O 2025, Gemini 2.5 Flash becomes the default model and 2.5 Pro gains Deep Think mode for complex reasoning tasks. Both models support native audio output.
-
----
-date: 2025-06-17
-importance: medium
-headline: Gemini CLI open-source agent released
----
-
-Google introduces Gemini CLI, an open-source AI agent for the terminal with coding, automation, and problem-solving capabilities and generous free usage limits.
-
----
-date: 2025-11-18
-importance: critical
-headline: Gemini 3 Pro and Deep Think launched
----
-
-Google releases Gemini 3 Pro and 3 Deep Think, its most powerful models yet. They replace the 2.5 generation and set new benchmarks across reasoning and coding tasks.
-
----
-date: 2025-12-17
-importance: medium
-headline: Gemini 3 Flash and 2.5 Flash Lite released
----
-
-Google rounds out the Gemini 3 family with Flash and Flash Lite models optimized for speed and cost-efficiency across different deployment scenarios.
+Google releases Gemini 2.0 Pro as an experimental model with improved coding and complex prompt performance. It becomes available through AI Studio and the Gemini API.

@@ -3,66 +3,58 @@
 ---
 date: 2021-01-28
 importance: critical
-headline: Anthropic founded by former OpenAI researchers
+headline: Anthropic founded by former OpenAI leaders
 ---
 
-Dario and Daniela Amodei, along with five other former OpenAI employees, found Anthropic with a focus on AI safety research. The split is driven by disagreements over OpenAI's direction toward commercialization.
+Dario Amodei, Daniela Amodei, and other former OpenAI researchers found Anthropic with a focus on AI safety. The company pursues "constitutional AI" — training models to be helpful, harmless, and honest.
 
 ---
-date: 2022-04-01
+date: 2021-05-28
 importance: medium
-headline: Anthropic raises $580M including $500M from FTX
+headline: Anthropic raises $124M Series A
 ---
 
-Anthropic secures $580 million in early funding, with the largest portion coming from Sam Bankman-Fried's FTX. The FTX investment would later become controversial after FTX's collapse.
+Anthropic closes a $124 million Series A round led by Jaan Tallinn and others. The funding establishes the company as a serious AI safety-focused lab.
+
+---
+date: 2022-12-15
+importance: high
+headline: Constitutional AI paper published
+---
+
+Anthropic publishes its Constitutional AI research, describing a method to train AI assistants using a set of principles rather than human feedback alone. The approach becomes central to Anthropic's alignment strategy.
 
 ---
 date: 2023-03-14
 importance: high
-headline: Claude and Claude Instant publicly released
+headline: Claude 1 launched
 ---
 
-Anthropic releases its first public models, Claude and Claude Instant, positioning them as safer alternatives to ChatGPT. Access is initially limited to approved partners.
+Anthropic releases Claude, its first commercial AI assistant, trained using Constitutional AI principles. It competes directly with ChatGPT and offers a 100K token context window.
 
 ---
 date: 2023-07-11
 importance: high
-headline: Claude 2 launched to the public
+headline: Claude 2 released with improved capabilities
 ---
 
-Anthropic releases Claude 2 with a 100K context window, improved reasoning, and public access for the first time. It establishes Anthropic as a credible competitor to OpenAI.
+Claude 2 launches with stronger coding, math, and reasoning skills plus a 100K context window. It demonstrates significant improvements over the original Claude.
 
 ---
 date: 2023-09-25
 importance: high
-headline: Amazon invests $1.25B in Anthropic
+headline: Amazon invests up to $4B in Anthropic
 ---
 
-Amazon announces a major partnership with Anthropic, investing $1.25 billion initially with plans for up to $4 billion total. Anthropic adopts AWS as its primary cloud provider.
-
----
-date: 2023-10-01
-importance: medium
-headline: Google invests $500M in Anthropic
----
-
-Google invests $500 million in Anthropic with commitments for up to $2 billion total, giving the AI safety company backing from two of the world's largest cloud providers.
+Amazon announces an investment of up to $4 billion in Anthropic, the largest venture investment in the company's history. Anthropic selects AWS as its primary cloud provider.
 
 ---
 date: 2024-03-04
 importance: critical
-headline: Claude 3 family launched — Opus, Sonnet, and Haiku
+headline: Claude 3 family launched — Opus, Sonnet, Haiku
 ---
 
-Anthropic releases three Claude 3 models spanning different performance tiers. Claude 3 Opus sets new benchmarks across multiple evaluations, competing directly with GPT-4 Turbo at the frontier.
-
----
-date: 2024-03-04
-importance: high
-headline: Amazon completes $4B investment in Anthropic
----
-
-Amazon completes its planned $4 billion total investment in Anthropic, with the remaining $2.75 billion following the initial $1.25 billion from September 2023.
+Anthropic releases three Claude 3 models spanning different capability and cost tiers. Claude 3 Opus matches or exceeds GPT-4 on key benchmarks, establishing Anthropic as a frontier lab.
 
 ---
 date: 2024-06-20
@@ -70,100 +62,36 @@ importance: high
 headline: Claude 3.5 Sonnet released
 ---
 
-Anthropic launches Claude 3.5 Sonnet, which outperforms Claude 3 Opus on most benchmarks while being faster and cheaper. It becomes the go-to model for coding tasks.
-
----
-date: 2024-08-01
-importance: medium
-headline: Key OpenAI researchers join Anthropic
----
-
-Anthropic hires several notable OpenAI departures including Jan Leike, John Schulman, and Durk Kingma, strengthening its alignment and research teams.
+Claude 3.5 Sonnet launches and outperforms Claude 3 Opus at a fraction of the cost and latency. It becomes one of the most capable and popular AI models available.
 
 ---
 date: 2024-10-22
 importance: high
-headline: Claude 3.5 Sonnet (new) and Computer Use launched
+headline: Computer use capability introduced
 ---
 
-Anthropic releases an upgraded Claude 3.5 Sonnet and introduces "computer use" capability, allowing Claude to control a computer by viewing screens and performing mouse/keyboard actions.
+Anthropic launches Claude's computer use ability in public beta, allowing it to interact with desktop applications by viewing screens and controlling mouse and keyboard.
 
 ---
-date: 2024-11-01
+date: 2024-11-25
 importance: medium
-headline: Anthropic partners with Palantir and AWS for defense
+headline: Amazon increases Anthropic investment to $8B
 ---
 
-Anthropic partners with Palantir and Amazon Web Services to provide Claude to U.S. intelligence and defense agencies, marking its entry into government AI.
+Amazon doubles its total investment in Anthropic to $8 billion, deepening the partnership. The deal reinforces Anthropic's position as a leading AI lab.
 
 ---
-date: 2024-11-01
-importance: high
-headline: Amazon invests additional $4B in Anthropic
+date: 2025-01-09
+importance: medium
+headline: Claude launches on iPhone and Android
 ---
 
-Amazon doubles its total investment in Anthropic to $8 billion, further cementing the partnership and making Anthropic a key AWS AI offering.
+Anthropic releases the Claude mobile app, making its AI assistant accessible on smartphones for the first time. The app supports voice and image inputs.
 
 ---
-date: 2025-02-24
-importance: high
-headline: Claude 3.7 Sonnet released with extended thinking
----
-
-Anthropic releases Claude 3.7 Sonnet, its first hybrid reasoning model combining fast responses with extended thinking capabilities for complex problems.
-
----
-date: 2025-03-01
-importance: high
-headline: Anthropic raises $3.5B Series E at $61.5B valuation
----
-
-Lightspeed Venture Partners leads a $3.5 billion round, establishing Anthropic as one of the most valuable AI companies in the world.
-
----
-date: 2025-05-22
+date: 2025-02-14
 importance: critical
-headline: Claude 4 Opus and Sonnet launched
+headline: Claude 3.7 Sonnet with extended thinking
 ---
 
-Anthropic releases Claude 4 Opus and Sonnet with breakthrough coding capabilities and new features. Claude Code exits research preview to general availability with VS Code and JetBrains integrations.
-
----
-date: 2025-05-22
-importance: high
-headline: Model Context Protocol (MCP) connector launched
----
-
-Anthropic introduces the MCP connector API, enabling Claude to interact with external tools and data sources through a standardized protocol that gains widespread adoption.
-
----
-date: 2025-09-01
-importance: critical
-headline: Anthropic raises $13B Series F at $183B valuation
----
-
-Anthropic completes a massive $13 billion funding round co-led by Iconiq Capital, Fidelity, and Lightspeed, tripling its valuation in just six months.
-
----
-date: 2025-10-01
-importance: high
-headline: Anthropic secures 1M Google TPUs in cloud partnership
----
-
-Anthropic announces a cloud partnership with Google for access to up to one million Tensor Processing Units, bringing over one gigawatt of AI compute online by 2026.
-
----
-date: 2025-11-01
-importance: high
-headline: Nvidia and Microsoft invest up to $15B in Anthropic
----
-
-Nvidia and Microsoft announce a partnership with Anthropic including up to $15 billion in investment, with Anthropic committing to $30 billion in Azure compute purchases.
-
----
-date: 2025-12-31
-importance: high
-headline: Anthropic signs $10B round at $350B valuation
----
-
-Anthropic signs a term sheet for a $10 billion funding round led by Coatue and GIC at a $350 billion valuation, capping an extraordinary year of growth.
+Anthropic releases Claude 3.7 Sonnet, a hybrid model that can switch between fast responses and extended step-by-step reasoning. It represents a new approach to combining speed with deep thinking.
