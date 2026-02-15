@@ -22,6 +22,7 @@ Anyone following the AI landscape who wants a visual, chronological way to see w
 ### Node Colors (Importance)
 | Color | Level | Meaning |
 |-------|-------|---------|
+| 🟣 Purple | Inflection | Possible industry inflection point — paradigm shift, existential risk milestone, regulatory sea change |
 | 🔴 Red | Critical | Industry-shifting (new model launch, major acquisition, regulation) |
 | 🟠 Orange | High | Significant product release, major partnership, big funding round |
 | 🔵 Blue | Medium | Notable update, feature launch, leadership change |
