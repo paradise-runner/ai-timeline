@@ -107,6 +107,23 @@ fn importance_label(importance: &str) -> &str {
     }
 }
 
+fn format_date_human(date: &str) -> String {
+    // Convert "2026-02-12" to "Feb 12, 2026"
+    let parts: Vec<&str> = date.split('-').collect();
+    if parts.len() == 3 {
+        let month = match parts[1] {
+            "01" => "Jan", "02" => "Feb", "03" => "Mar", "04" => "Apr",
+            "05" => "May", "06" => "Jun", "07" => "Jul", "08" => "Aug",
+            "09" => "Sep", "10" => "Oct", "11" => "Nov", "12" => "Dec",
+            _ => parts[1],
+        };
+        let day = parts[2].trim_start_matches('0');
+        format!("{} {}, {}", month, day, parts[0])
+    } else {
+        date.to_string()
+    }
+}
+
 fn html_escape(s: &str) -> String {
     s.replace('&', "&amp;")
         .replace('<', "&lt;")
@@ -145,11 +162,23 @@ fn generate_html(entries: &[Entry]) -> String {
     }
 
     let mut nodes_html = String::new();
+    let mut last_year: Option<String> = None;
     for (i, entry) in entries.iter().enumerate() {
+        // Year separator markers
+        let entry_year = entry.date.split('-').next().unwrap_or("").to_string();
+        if last_year.as_ref() != Some(&entry_year) {
+            nodes_html.push_str(&format!(
+                "<div class=\"year-marker\" data-year=\"{year}\"><span>{year}</span></div>\n",
+                year = entry_year
+            ));
+            last_year = Some(entry_year);
+        }
+
         let side = if i % 2 == 0 { "left" } else { "right" };
         let color = importance_color(&entry.importance);
         let label = importance_label(&entry.importance);
         let node_id = format!("{}-{}-{}", entry.company_slug, entry.date, slugify(&entry.headline));
+        let display_date = format_date_human(&entry.date);
         let headline_html = if let Some(ref url) = entry.url {
             format!(
                 r#"<a href="{}" target="_blank" rel="noopener" class="timeline-link">{}</a>"#,
@@ -165,7 +194,7 @@ fn generate_html(entries: &[Entry]) -> String {
   <div class=\"timeline-dot\"></div>\n\
   <div class=\"timeline-content\">\n\
     <div class=\"timeline-meta\">\n\
-      <span class=\"timeline-date\">{date}</span>\n\
+      <span class=\"timeline-date\">{display_date}</span>\n\
       <span class=\"timeline-badge\" style=\"background: {color}\">{label}</span>\n\
       <span class=\"timeline-company\">{company}</span>\n\
       <a href=\"{permalink}\" class=\"permalink\" title=\"Link to this event\">#</a>\n\
@@ -180,6 +209,7 @@ fn generate_html(entries: &[Entry]) -> String {
             importance = entry.importance,
             color = color,
             date = entry.date,
+            display_date = display_date,
             label = label,
             company = entry.company_name,
             permalink = permalink_href,
@@ -330,13 +360,6 @@ body.light .theme-toggle {{
 }}
 .tab:hover {{ background: #27272a; color: #e4e4e7; }}
 .tab.active {{ background: #3b82f6; border-color: #3b82f6; color: #fff; }}
-.filter-bar {{
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding: 0 20px 30px;
-  flex-wrap: wrap;
-}}
 .filter {{
   background: #18181b;
   border: 1px solid #27272a;
@@ -504,6 +527,64 @@ body.light .theme-toggle {{
 }}
 .permalink:hover {{ color: #3b82f6; }}
 
+.year-marker {{
+  position: relative;
+  text-align: center;
+  margin: 20px 0;
+  z-index: 3;
+  clear: both;
+  width: 100%;
+}}
+.year-marker span {{
+  display: inline-block;
+  background: linear-gradient(135deg, #3b82f6, #a855f7);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 6px 24px;
+  border-radius: 9999px;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 12px rgba(99,102,241,0.3);
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}}
+body.light .year-marker span {{
+  box-shadow: 0 2px 12px rgba(99,102,241,0.2);
+}}
+.back-to-top {{
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 200;
+  background: linear-gradient(135deg, #3b82f6, #a855f7);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  transform: translateY(10px);
+}}
+.back-to-top.show {{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}}
+.back-to-top:hover {{ transform: scale(1.1); }}
+.importance-label {{
+  color: #a1a1aa;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}}
+body.light .importance-label {{ color: #71717a; }}
 @media (max-width: 700px) {{
   .timeline::before {{ left: 20px; }}
   .timeline-item {{
@@ -537,19 +618,18 @@ body.light .theme-toggle {{
   <input type="text" class="search-input" placeholder="Search..." id="searchInput">
   <select class="year-select" id="yearFrom"><option value="">From</option>{year_options}</select>
   <select class="year-select" id="yearTo"><option value="">To</option>{year_options_rev}</select>
-  <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">🌙</button>
-</div>
-<div class="filter-bar">
+  <span class="importance-label">Importance:</span>
   <button class="filter active" data-min="all">All</button>
-  <button class="filter" data-min="low">Low+</button>
   <button class="filter" data-min="medium">Medium+</button>
   <button class="filter" data-min="high">High+</button>
   <button class="filter" data-min="critical">Critical+</button>
   <button class="filter" data-min="inflection">Inflection</button>
+  <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">🌙</button>
 </div>
 <div class="timeline">
   {nodes}
 </div>
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
 <script>
 const levels = ['low', 'medium', 'high', 'critical', 'inflection'];
 let activeCompany = 'all';
@@ -637,18 +717,31 @@ if (location.hash) {{
   if (el) {{ el.classList.add('visible'); setTimeout(() => el.scrollIntoView({{ behavior: 'smooth', block: 'center' }}), 100); }}
 }}
 
+// Single global observer
+const observer = new IntersectionObserver((entries) => {{
+  entries.forEach(e => {{
+    if (e.isIntersecting) {{
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }}
+  }});
+}}, {{ threshold: 0.05, rootMargin: '0px 0px 50px 0px' }});
+
 function observe() {{
-  const items = document.querySelectorAll('.timeline-item:not(.hidden)');
-  const observer = new IntersectionObserver((entries) => {{
-    entries.forEach(e => {{
-      if (e.isIntersecting) {{
-        e.target.classList.add('visible');
-      }}
-    }});
-  }}, {{ threshold: 0.1 }});
-  items.forEach(item => observer.observe(item));
+  document.querySelectorAll('.timeline-item:not(.hidden):not(.visible)').forEach(item => {{
+    observer.observe(item);
+  }});
 }}
 observe();
+
+// Back to top
+const backBtn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {{
+  backBtn.classList.toggle('show', window.scrollY > 400);
+}});
+backBtn.addEventListener('click', () => {{
+  window.scrollTo({{ top: 0, behavior: 'smooth' }});
+}});
 </script>
 </body>
 </html>"##,
