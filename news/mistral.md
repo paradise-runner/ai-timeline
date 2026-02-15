@@ -1,6 +1,38 @@
 # Mistral
 
 ---
+date: 2023-04-28
+importance: high
+headline: Mistral AI founded by ex-Google DeepMind and Meta researchers
+---
+
+Arthur Mensch (ex-DeepMind), Guillaume Lample, and Timothée Lacroix (both ex-Meta) found Mistral AI in Paris. They meet during studies at École Polytechnique and set out to build Europe's leading AI company.
+
+---
+date: 2023-06-13
+importance: medium
+headline: Mistral raises €105M seed round
+---
+
+Just weeks after founding, Mistral raises €105 million from Lightspeed Venture Partners, Eric Schmidt, and Xavier Niel — one of the largest European AI seed rounds ever.
+
+---
+date: 2023-09-27
+importance: high
+headline: Mistral 7B released as open-weight model
+---
+
+Mistral releases its first model, Mistral 7B, which outperforms Llama 2 13B on all benchmarks despite being half the size. Released via torrent link, it establishes Mistral's reputation for efficient, high-quality open models.
+
+---
+date: 2023-12-10
+importance: high
+headline: Mistral raises €385M at $2B+ valuation
+---
+
+Andreessen Horowitz leads a €385 million round, catapulting Mistral to over $2 billion valuation within eight months of founding — the fastest European AI unicorn.
+
+---
 date: 2024-02-26
 importance: high
 headline: Mistral partners with Microsoft Azure and launches Le Chat
@@ -63,27 +95,3 @@ headline: Mistral Large 3 and Ministral 3 released
 ---
 
 Mistral launches its most capable model yet — Mistral Large 3 with 675B parameters (41B active) as a mixture-of-experts model, alongside Ministral 3 compact models. All under Apache 2.0 license.
-
----
-date: 2023-05-01
-importance: high
-headline: Mistral AI founded by ex-DeepMind and Meta researchers
----
-
-Arthur Mensch, Guillaume Lample, and Timothée Lacroix found Mistral AI in Paris. The company raises €105 million in seed funding — one of Europe's largest ever — before having any product, signaling massive confidence in the team.
-
----
-date: 2023-09-27
-importance: critical
-headline: Mistral 7B released — punches above its weight
----
-
-Mistral releases Mistral 7B via a surprise torrent link, a 7.3-billion-parameter model that outperforms Llama 2 13B on all benchmarks under Apache 2.0 license. The unconventional release and impressive performance establish Mistral as a serious open-source AI player.
-
----
-date: 2023-12-11
-importance: high
-headline: Mixtral 8x7B mixture-of-experts model released
----
-
-Mistral releases Mixtral 8x7B, a sparse mixture-of-experts model that matches GPT-3.5 performance while using only 13B active parameters per token. Released under Apache 2.0, it proves the efficiency of MoE architectures for open models.

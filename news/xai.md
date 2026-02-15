@@ -1,6 +1,30 @@
 # xAI
 
 ---
+date: 2023-07-12
+importance: high
+headline: Elon Musk officially announces xAI
+---
+
+Elon Musk announces the formation of xAI, an AI company with the stated goal of "understanding the true nature of the universe." Founded as a public-benefit corporation with key recruits from DeepMind and other labs.
+
+---
+date: 2023-11-03
+importance: high
+headline: Grok 1 chatbot launched on X
+---
+
+xAI releases Grok 1, its first chatbot integrated into the X (formerly Twitter) platform with real-time access to posts. Positioned as an irreverent, less filtered alternative to ChatGPT.
+
+---
+date: 2024-03-17
+importance: medium
+headline: Grok-1 open-sourced under Apache 2.0
+---
+
+xAI open-sources Grok-1's 314B parameter mixture-of-experts weights under the Apache 2.0 license, making it one of the largest openly available models at the time.
+
+---
 date: 2024-05-26
 importance: high
 headline: xAI raises $6B in Series B funding
@@ -71,27 +95,3 @@ headline: Grok 4.1 and Grok 4.1 Thinking released
 ---
 
 xAI releases Grok 4.1 as its latest model generation with improved reasoning through a dedicated "Thinking" variant, competing with OpenAI's o3 and Claude Opus 4.
-
----
-date: 2023-07-12
-importance: high
-headline: xAI founded by Elon Musk
----
-
-Elon Musk announces xAI, a new AI company focused on understanding the universe. The team includes veterans from DeepMind, OpenAI, Google Research, and Tesla, with Musk citing concerns about AI safety at existing labs.
-
----
-date: 2023-11-04
-importance: high
-headline: Grok 1 launched on X platform
----
-
-xAI releases Grok 1, its first AI model, integrated into the X (formerly Twitter) platform for Premium+ subscribers. Grok features real-time access to X posts and a more irreverent personality than competitors.
-
----
-date: 2023-12-07
-importance: medium
-headline: xAI raises $500M in early funding
----
-
-xAI raises approximately $500 million from investors, building the initial war chest for its ambitious AI development plans and compute infrastructure.
