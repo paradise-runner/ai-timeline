@@ -191,19 +191,12 @@ ai-timeline/
 - [x] GitHub Actions: build + deploy to Pages on push
 - [x] Dark theme
 
-### Phase 2 — Polish
-- [ ] `new` command to scaffold entries with date/importance/headline prompts
-- [ ] Smooth tab/filter transitions (animate node show/hide)
-- [ ] Search/filter by keyword
-- [ ] Date range filtering (year picker or slider)
-- [ ] Light/dark mode toggle
-- [ ] Permalink to specific nodes (anchor links)
-- [ ] Source URLs on each node (link to original article/announcement)
-- [ ] README with setup/usage instructions
-
-### Phase 3 — Maybe
-- [ ] RSS feed generation
-- [ ] Contributor submissions via PR template
-- [ ] Node expand/collapse for longer descriptions
-- [ ] Year markers / section headers on the timeline
-- [ ] Stats summary at top (total events, events per company, date range)
+### Phase 2 — Polish ✅
+- [x] `new` command to scaffold entries with date/importance/headline prompts
+- [x] Smooth tab/filter transitions (animate node show/hide)
+- [x] Search/filter by keyword
+- [x] Date range filtering (year dropdowns)
+- [x] Light/dark mode toggle (localStorage persistence)
+- [x] Permalink to specific nodes (anchor links with copy on hover)
+- [x] Source URLs on each node (optional `url:` field in entry header)
+- [x] README with setup/usage instructions
