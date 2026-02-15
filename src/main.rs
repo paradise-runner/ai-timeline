@@ -119,7 +119,7 @@ fn generate_html(entries: &[Entry]) -> String {
         let color = importance_color(&entry.importance);
         let label = importance_label(&entry.importance);
         nodes_html.push_str(&format!(
-            r#"<div class="timeline-item {side}" data-company="{slug}" style="--node-color: {color}">
+            r#"<div class="timeline-item {side}" data-company="{slug}" data-importance="{importance}" style="--node-color: {color}">
   <div class="timeline-dot"></div>
   <div class="timeline-content">
     <div class="timeline-meta">
@@ -134,6 +134,7 @@ fn generate_html(entries: &[Entry]) -> String {
 "#,
             side = side,
             slug = entry.company_slug,
+            importance = entry.importance,
             color = color,
             date = entry.date,
             label = label,
@@ -184,6 +185,26 @@ body {{
 }}
 .tab:hover {{ background: #27272a; color: #e4e4e7; }}
 .tab.active {{ background: #3b82f6; border-color: #3b82f6; color: #fff; }}
+.filter-bar {{
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 20px 30px;
+  flex-wrap: wrap;
+}}
+.filter {{
+  background: #18181b;
+  border: 1px solid #27272a;
+  color: #a1a1aa;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+}}
+.filter:hover {{ background: #27272a; color: #e4e4e7; }}
+.filter.active {{ background: #a855f7; border-color: #a855f7; color: #fff; }}
 .header {{
   text-align: center;
   padding: 60px 20px 40px;
@@ -334,24 +355,52 @@ body {{
 <div class="tab-bar">
   {tabs}
 </div>
+<div class="filter-bar">
+  <button class="filter active" data-min="all">All</button>
+  <button class="filter" data-min="low">Low+</button>
+  <button class="filter" data-min="medium">Medium+</button>
+  <button class="filter" data-min="high">High+</button>
+  <button class="filter" data-min="critical">Critical+</button>
+  <button class="filter" data-min="inflection">Inflection</button>
+</div>
 <div class="timeline">
   {nodes}
 </div>
 <script>
+const levels = ['low', 'medium', 'high', 'critical', 'inflection'];
+let activeCompany = 'all';
+let activeMin = 'all';
+
+function applyFilters() {{
+  const minIdx = activeMin === 'all' ? 0 : levels.indexOf(activeMin);
+  document.querySelectorAll('.timeline-item').forEach(item => {{
+    const companyMatch = activeCompany === 'all' || item.dataset.company === activeCompany;
+    const impIdx = levels.indexOf(item.dataset.importance);
+    const impMatch = impIdx >= minIdx;
+    if (companyMatch && impMatch) {{
+      item.classList.remove('hidden');
+    }} else {{
+      item.classList.add('hidden');
+    }}
+  }});
+  observe();
+}}
+
 document.querySelectorAll('.tab').forEach(tab => {{
   tab.addEventListener('click', () => {{
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
-    const company = tab.dataset.company;
-    document.querySelectorAll('.timeline-item').forEach(item => {{
-      if (company === 'all' || item.dataset.company === company) {{
-        item.classList.remove('hidden');
-      }} else {{
-        item.classList.add('hidden');
-      }}
-    }});
-    // Re-run observer
-    observe();
+    activeCompany = tab.dataset.company;
+    applyFilters();
+  }});
+}});
+
+document.querySelectorAll('.filter').forEach(btn => {{
+  btn.addEventListener('click', () => {{
+    document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    activeMin = btn.dataset.min;
+    applyFilters();
   }});
 }});
 
