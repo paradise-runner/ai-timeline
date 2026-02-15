@@ -1,6 +1,70 @@
 # Google
 
 ---
+date: 2015-11-09
+importance: high
+headline: TensorFlow open-sourced by Google Brain
+---
+
+Google open-sources TensorFlow, its machine learning framework, which becomes the dominant deep learning platform for years. It accelerates AI research globally by making Google's internal tools freely available.
+
+---
+date: 2016-03-15
+importance: inflection
+headline: AlphaGo defeats Lee Sedol 4-1 in Go
+---
+
+Google DeepMind's AlphaGo defeats world champion Lee Sedol in a landmark five-game Go match in Seoul. The victory is widely seen as a watershed moment for AI, demonstrating superhuman performance in a game thought to be decades away from AI mastery.
+
+---
+date: 2017-06-12
+importance: inflection
+headline: "Attention Is All You Need" — Transformer architecture published
+---
+
+Google researchers publish the Transformer paper, introducing the self-attention mechanism that replaces recurrence and convolution. This architecture becomes the foundation for virtually all modern AI models including GPT, BERT, and Gemini.
+
+---
+date: 2017-12-01
+importance: high
+headline: AlphaZero masters chess, shogi, and Go from scratch
+---
+
+DeepMind's AlphaZero achieves superhuman performance in chess, shogi, and Go after just hours of self-play with no human knowledge, demonstrating the power of general reinforcement learning.
+
+---
+date: 2018-10-11
+importance: high
+headline: Google releases BERT language model
+---
+
+Google publishes BERT (Bidirectional Encoder Representations from Transformers), which revolutionizes NLP by pre-training bidirectional representations. It becomes the backbone of Google Search and sets new benchmarks across language tasks.
+
+---
+date: 2020-07-15
+importance: high
+headline: AlphaFold solves protein structure prediction
+---
+
+DeepMind's AlphaFold achieves breakthrough accuracy in predicting protein 3D structures at CASP14, solving a 50-year grand challenge in biology. The technology later predicts structures for nearly all known proteins.
+
+---
+date: 2023-04-14
+importance: high
+headline: Google Brain and DeepMind merge into Google DeepMind
+---
+
+Google merges its two premier AI research groups — Google Brain and DeepMind — into a single unit called Google DeepMind, led by Demis Hassabis. The consolidation is a response to competitive pressure from OpenAI's ChatGPT.
+
+---
+date: 2023-12-06
+importance: critical
+headline: Gemini 1.0 announced — Google's frontier multimodal model
+---
+
+Google announces Gemini 1.0 in Ultra, Pro, and Nano sizes. Gemini Ultra is the first model to exceed human-expert performance on the MMLU benchmark (90%), positioning it as Google's answer to GPT-4.
+
+---
 date: 2024-02-08
 importance: high
 headline: Gemini brand unification and 1.5 launch

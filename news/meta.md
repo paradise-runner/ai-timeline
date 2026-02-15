@@ -71,3 +71,43 @@ headline: Meta launches AI Studio for custom AI characters
 ---
 
 Meta rolls out AI Studio, allowing businesses and creators to build custom AI agents powered by Llama models across Meta's family of apps.
+
+---
+date: 2013-12-09
+importance: high
+headline: Facebook AI Research (FAIR) lab founded
+---
+
+Facebook establishes FAIR (Facebook AI Research) led by Yann LeCun, one of the pioneers of deep learning. The lab becomes a major force in open AI research and talent development.
+
+---
+date: 2016-09-01
+importance: high
+headline: PyTorch framework released
+---
+
+Facebook AI Research releases PyTorch, a flexible deep learning framework that rapidly becomes the preferred tool for AI researchers. Its dynamic computation graph and Python-first design make it dominant in academia and increasingly in industry.
+
+---
+date: 2020-04-28
+importance: medium
+headline: BlenderBot open-domain chatbot released
+---
+
+Facebook AI releases BlenderBot, an open-domain chatbot that combines empathy, knowledge, and personality. It represents Meta's early push into conversational AI before the LLM era.
+
+---
+date: 2023-02-24
+importance: critical
+headline: LLaMA 1 released — ignites open-source AI movement
+---
+
+Meta releases LLaMA (Large Language Model Meta AI) in 7B to 65B parameter sizes to researchers. After the weights leak publicly, it spawns an explosion of open-source AI development including Alpaca, Vicuna, and dozens of fine-tuned variants.
+
+---
+date: 2023-07-18
+importance: high
+headline: Llama 2 released with commercial license
+---
+
+Meta releases Llama 2 in 7B, 13B, and 70B sizes with a permissive commercial license, in partnership with Microsoft. This marks Meta's strategic commitment to open-weight AI as a counterbalance to closed-model companies.

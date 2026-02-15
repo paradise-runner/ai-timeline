@@ -71,3 +71,27 @@ headline: Grok 4.1 and Grok 4.1 Thinking released
 ---
 
 xAI releases Grok 4.1 as its latest model generation with improved reasoning through a dedicated "Thinking" variant, competing with OpenAI's o3 and Claude Opus 4.
+
+---
+date: 2023-07-12
+importance: high
+headline: xAI founded by Elon Musk
+---
+
+Elon Musk announces xAI, a new AI company focused on understanding the universe. The team includes veterans from DeepMind, OpenAI, Google Research, and Tesla, with Musk citing concerns about AI safety at existing labs.
+
+---
+date: 2023-11-04
+importance: high
+headline: Grok 1 launched on X platform
+---
+
+xAI releases Grok 1, its first AI model, integrated into the X (formerly Twitter) platform for Premium+ subscribers. Grok features real-time access to X posts and a more irreverent personality than competitors.
+
+---
+date: 2023-12-07
+importance: medium
+headline: xAI raises $500M in early funding
+---
+
+xAI raises approximately $500 million from investors, building the initial war chest for its ambitious AI development plans and compute infrastructure.

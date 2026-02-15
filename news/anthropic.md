@@ -1,6 +1,54 @@
 # Anthropic
 
 ---
+date: 2021-01-28
+importance: critical
+headline: Anthropic founded by former OpenAI researchers
+---
+
+Dario and Daniela Amodei, along with five other former OpenAI employees, found Anthropic with a focus on AI safety research. The split is driven by disagreements over OpenAI's direction toward commercialization.
+
+---
+date: 2022-04-01
+importance: medium
+headline: Anthropic raises $580M including $500M from FTX
+---
+
+Anthropic secures $580 million in early funding, with the largest portion coming from Sam Bankman-Fried's FTX. The FTX investment would later become controversial after FTX's collapse.
+
+---
+date: 2023-03-14
+importance: high
+headline: Claude and Claude Instant publicly released
+---
+
+Anthropic releases its first public models, Claude and Claude Instant, positioning them as safer alternatives to ChatGPT. Access is initially limited to approved partners.
+
+---
+date: 2023-07-11
+importance: high
+headline: Claude 2 launched to the public
+---
+
+Anthropic releases Claude 2 with a 100K context window, improved reasoning, and public access for the first time. It establishes Anthropic as a credible competitor to OpenAI.
+
+---
+date: 2023-09-25
+importance: high
+headline: Amazon invests $1.25B in Anthropic
+---
+
+Amazon announces a major partnership with Anthropic, investing $1.25 billion initially with plans for up to $4 billion total. Anthropic adopts AWS as its primary cloud provider.
+
+---
+date: 2023-10-01
+importance: medium
+headline: Google invests $500M in Anthropic
+---
+
+Google invests $500 million in Anthropic with commitments for up to $2 billion total, giving the AI safety company backing from two of the world's largest cloud providers.
+
+---
 date: 2024-03-04
 importance: critical
 headline: Claude 3 family launched — Opus, Sonnet, and Haiku

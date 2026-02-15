@@ -63,3 +63,27 @@ headline: Mistral Large 3 and Ministral 3 released
 ---
 
 Mistral launches its most capable model yet — Mistral Large 3 with 675B parameters (41B active) as a mixture-of-experts model, alongside Ministral 3 compact models. All under Apache 2.0 license.
+
+---
+date: 2023-05-01
+importance: high
+headline: Mistral AI founded by ex-DeepMind and Meta researchers
+---
+
+Arthur Mensch, Guillaume Lample, and Timothée Lacroix found Mistral AI in Paris. The company raises €105 million in seed funding — one of Europe's largest ever — before having any product, signaling massive confidence in the team.
+
+---
+date: 2023-09-27
+importance: critical
+headline: Mistral 7B released — punches above its weight
+---
+
+Mistral releases Mistral 7B via a surprise torrent link, a 7.3-billion-parameter model that outperforms Llama 2 13B on all benchmarks under Apache 2.0 license. The unconventional release and impressive performance establish Mistral as a serious open-source AI player.
+
+---
+date: 2023-12-11
+importance: high
+headline: Mixtral 8x7B mixture-of-experts model released
+---
+
+Mistral releases Mixtral 8x7B, a sparse mixture-of-experts model that matches GPT-3.5 performance while using only 13B active parameters per token. Released under Apache 2.0, it proves the efficiency of MoE architectures for open models.

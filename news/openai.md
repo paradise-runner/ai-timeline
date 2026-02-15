@@ -1,6 +1,110 @@
 # OpenAI
 
 ---
+date: 2015-12-11
+importance: critical
+headline: OpenAI founded as nonprofit AI research lab
+---
+
+OpenAI is founded by Sam Altman, Elon Musk, Ilya Sutskever, Greg Brockman, and others with $1 billion in pledged funding. The mission: ensure artificial general intelligence benefits all of humanity.
+
+---
+date: 2018-06-11
+importance: high
+headline: GPT-1 published — "Improving Language Understanding by Generative Pre-Training"
+---
+
+OpenAI publishes the first GPT model, demonstrating that generative pre-training on a large text corpus followed by fine-tuning achieves strong results across NLP tasks. The transformer-based approach lays the foundation for all future GPT models.
+
+---
+date: 2019-02-14
+importance: high
+headline: GPT-2 released — deemed "too dangerous" for full release
+---
+
+OpenAI releases GPT-2 with 1.5 billion parameters but initially withholds the full model, citing concerns about misuse for generating fake news. The staged release sparks debate about responsible AI disclosure.
+
+---
+date: 2019-07-22
+importance: high
+headline: Microsoft invests $1B in OpenAI
+---
+
+Microsoft announces a $1 billion investment in OpenAI and becomes its exclusive cloud provider via Azure. OpenAI transitions from nonprofit to a "capped profit" structure to attract investment.
+
+---
+date: 2020-06-11
+importance: critical
+headline: GPT-3 released with 175 billion parameters
+---
+
+OpenAI releases GPT-3, a massive 175B parameter model that demonstrates remarkable few-shot learning abilities. Its API launch marks OpenAI's shift toward commercialization and sparks widespread interest in large language models.
+
+---
+date: 2021-01-05
+importance: high
+headline: DALL-E announced — text-to-image generation
+---
+
+OpenAI reveals DALL-E, a model that generates images from text descriptions using a modified GPT-3 architecture. It demonstrates AI's creative potential and opens a new frontier in generative AI.
+
+---
+date: 2021-06-29
+importance: medium
+headline: GitHub Copilot launched with OpenAI Codex
+---
+
+GitHub launches Copilot, an AI pair programmer powered by OpenAI Codex, marking the first major commercial application of LLMs for code generation. It previews the future of AI-assisted software development.
+
+---
+date: 2022-04-06
+importance: high
+headline: DALL-E 2 released with dramatic quality improvements
+---
+
+OpenAI releases DALL-E 2 with photorealistic image generation capabilities far surpassing the original. It can edit images, create variations, and generates widespread public fascination with AI art.
+
+---
+date: 2022-11-30
+importance: inflection
+headline: ChatGPT launched — ignites the AI boom
+---
+
+OpenAI releases ChatGPT, a conversational AI interface built on GPT-3.5. It reaches 100 million users in two months, becoming the fastest-growing consumer application in history and catalyzing the global AI boom.
+
+---
+date: 2023-01-23
+importance: high
+headline: Microsoft invests $13B in OpenAI
+---
+
+Microsoft announces a multibillion-dollar investment bringing its total to approximately $13 billion, deepening integration of OpenAI models into Bing, Office, and Azure products.
+
+---
+date: 2023-03-14
+importance: critical
+headline: GPT-4 released — multimodal frontier model
+---
+
+OpenAI launches GPT-4, its most capable model yet, with multimodal capabilities (text and image input). It scores in the top percentiles on bar exams, SATs, and professional certifications, establishing a new frontier for AI capability.
+
+---
+date: 2023-11-06
+importance: high
+headline: OpenAI DevDay — GPTs and GPT-4 Turbo
+---
+
+At its first developer conference, OpenAI announces GPT-4 Turbo with 128K context, custom GPTs that anyone can build, and the Assistants API. The event signals OpenAI's platform ambitions.
+
+---
+date: 2023-11-17
+importance: critical
+headline: Sam Altman fired and reinstated in five days
+---
+
+OpenAI's board removes CEO Sam Altman, citing loss of confidence. After employee revolt (95% threaten to quit), Microsoft offers to hire the team, and Altman is reinstated on November 22 with a restructured board. The crisis reshapes AI industry governance.
+
+---
 date: 2024-02-15
 importance: medium
 headline: OpenAI previews Sora text-to-video model
