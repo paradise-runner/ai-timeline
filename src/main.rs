@@ -1,4 +1,5 @@
 use std::fs;
+use std::io::{self, Write as IoWrite};
 use std::path::{Path, PathBuf};
 
 #[derive(Debug, Clone)]
@@ -9,6 +10,18 @@ struct Entry {
     importance: String,
     headline: String,
     description: String,
+    url: Option<String>,
+}
+
+fn slugify(s: &str) -> String {
+    s.to_lowercase()
+        .chars()
+        .map(|c| if c.is_alphanumeric() { c } else { '-' })
+        .collect::<String>()
+        .split('-')
+        .filter(|s| !s.is_empty())
+        .collect::<Vec<_>>()
+        .join("-")
 }
 
 fn parse_file(path: &Path) -> Vec<Entry> {
@@ -16,28 +29,21 @@ fn parse_file(path: &Path) -> Vec<Entry> {
     let content = fs::read_to_string(path).expect("Failed to read file");
     let mut entries = Vec::new();
 
-    // Extract company name from first # heading
     let company_name = content
         .lines()
         .find(|l| l.starts_with("# "))
         .map(|l| l[2..].trim().to_string())
         .unwrap_or_else(|| slug.clone());
 
-    // Split on --- but we need to find entry blocks
-    // Pattern: ---\ndate: ...\nimportance: ...\nheadline: ...\n---\n\nDescription
     let parts: Vec<&str> = content.split("\n---\n").collect();
-    // parts[0] = "# Company\n" (skip)
-    // parts[1] = "date: ...\nimportance: ...\nheadline: ...\n" (header)
-    // parts[2] = "Description\n" OR "Description\n\n" followed by next header
-    // Actually the pattern alternates: odd indices are headers, the text after until next --- is description
 
-    let mut i = 1; // skip the first part (company heading)
+    let mut i = 1;
     while i < parts.len() {
         let header_text = parts[i].trim();
-        // Parse header fields
         let mut date = String::new();
         let mut importance = String::new();
         let mut headline = String::new();
+        let mut url: Option<String> = None;
 
         for line in header_text.lines() {
             let line = line.trim();
@@ -47,10 +53,14 @@ fn parse_file(path: &Path) -> Vec<Entry> {
                 importance = v.trim().to_string();
             } else if let Some(v) = line.strip_prefix("headline:") {
                 headline = v.trim().to_string();
+            } else if let Some(v) = line.strip_prefix("url:") {
+                let u = v.trim().to_string();
+                if !u.is_empty() {
+                    url = Some(u);
+                }
             }
         }
 
-        // Description is next part
         let description = if i + 1 < parts.len() {
             parts[i + 1].trim().to_string()
         } else {
@@ -65,10 +75,11 @@ fn parse_file(path: &Path) -> Vec<Entry> {
                 importance,
                 headline,
                 description,
+                url,
             });
         }
 
-        i += 2; // skip to next header
+        i += 2;
     }
 
     entries
@@ -96,8 +107,14 @@ fn importance_label(importance: &str) -> &str {
     }
 }
 
+fn html_escape(s: &str) -> String {
+    s.replace('&', "&amp;")
+        .replace('<', "&lt;")
+        .replace('>', "&gt;")
+        .replace('"', "&quot;")
+}
+
 fn generate_html(entries: &[Entry]) -> String {
-    // Collect unique companies in order
     let mut companies: Vec<(String, String)> = Vec::new();
     let mut seen = std::collections::HashSet::new();
     for e in entries {
@@ -106,6 +123,15 @@ fn generate_html(entries: &[Entry]) -> String {
         }
     }
 
+    // Collect unique years
+    let mut years: Vec<String> = entries
+        .iter()
+        .filter_map(|e| e.date.split('-').next().map(|y| y.to_string()))
+        .collect::<std::collections::BTreeSet<_>>()
+        .into_iter()
+        .collect();
+    years.sort();
+
     let mut tabs_html = String::from(r#"<button class="tab active" data-company="all">All</button>"#);
     for (slug, name) in &companies {
         tabs_html.push_str(&format!(
@@ -113,34 +139,52 @@ fn generate_html(entries: &[Entry]) -> String {
         ));
     }
 
+    let mut year_options = String::new();
+    for y in &years {
+        year_options.push_str(&format!(r#"<option value="{y}">{y}</option>"#));
+    }
+
     let mut nodes_html = String::new();
     for (i, entry) in entries.iter().enumerate() {
         let side = if i % 2 == 0 { "left" } else { "right" };
         let color = importance_color(&entry.importance);
         let label = importance_label(&entry.importance);
+        let node_id = format!("{}-{}-{}", entry.company_slug, entry.date, slugify(&entry.headline));
+        let headline_html = if let Some(ref url) = entry.url {
+            format!(
+                r#"<a href="{}" target="_blank" rel="noopener" class="timeline-link">{}</a>"#,
+                html_escape(url),
+                html_escape(&entry.headline)
+            )
+        } else {
+            html_escape(&entry.headline)
+        };
+        let permalink_href = format!("#{}", node_id);
         nodes_html.push_str(&format!(
-            r#"<div class="timeline-item {side}" data-company="{slug}" data-importance="{importance}" style="--node-color: {color}">
-  <div class="timeline-dot"></div>
-  <div class="timeline-content">
-    <div class="timeline-meta">
-      <span class="timeline-date">{date}</span>
-      <span class="timeline-badge" style="background: {color}">{label}</span>
-      <span class="timeline-company">{company}</span>
-    </div>
-    <h3 class="timeline-headline">{headline}</h3>
-    <p class="timeline-desc">{desc}</p>
-  </div>
-</div>
-"#,
+            "<div class=\"timeline-item {side}\" id=\"{node_id}\" data-company=\"{slug}\" data-importance=\"{importance}\" data-date=\"{date}\" style=\"--node-color: {color}\">\n\
+  <div class=\"timeline-dot\"></div>\n\
+  <div class=\"timeline-content\">\n\
+    <div class=\"timeline-meta\">\n\
+      <span class=\"timeline-date\">{date}</span>\n\
+      <span class=\"timeline-badge\" style=\"background: {color}\">{label}</span>\n\
+      <span class=\"timeline-company\">{company}</span>\n\
+      <a href=\"{permalink}\" class=\"permalink\" title=\"Link to this event\">#</a>\n\
+    </div>\n\
+    <h3 class=\"timeline-headline\">{headline_html}</h3>\n\
+    <p class=\"timeline-desc\">{desc}</p>\n\
+  </div>\n\
+</div>\n",
             side = side,
+            node_id = node_id,
             slug = entry.company_slug,
             importance = entry.importance,
             color = color,
             date = entry.date,
             label = label,
             company = entry.company_name,
-            headline = entry.headline,
-            desc = entry.description,
+            permalink = permalink_href,
+            headline_html = headline_html,
+            desc = html_escape(&entry.description),
         ));
     }
 
@@ -158,6 +202,58 @@ body {{
   color: #e4e4e7;
   line-height: 1.6;
   min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}}
+/* Light mode */
+body.light {{
+  background: #f8f8fc;
+  color: #1a1a2e;
+}}
+body.light .tab-bar {{
+  background: #f8f8fcee;
+  border-bottom-color: #d4d4d8;
+}}
+body.light .tab {{
+  background: #e4e4e7;
+  border-color: #d4d4d8;
+  color: #52525b;
+}}
+body.light .tab:hover {{ background: #d4d4d8; color: #1a1a2e; }}
+body.light .tab.active {{ background: #3b82f6; border-color: #3b82f6; color: #fff; }}
+body.light .filter {{
+  background: #e4e4e7;
+  border-color: #d4d4d8;
+  color: #52525b;
+}}
+body.light .filter:hover {{ background: #d4d4d8; color: #1a1a2e; }}
+body.light .filter.active {{ background: #a855f7; border-color: #a855f7; color: #fff; }}
+body.light .timeline::before {{ background: #d4d4d8; }}
+body.light .timeline-content {{
+  background: #fff;
+  border-color: #d4d4d8;
+}}
+body.light .timeline-headline {{ color: #1a1a2e; }}
+body.light .timeline-desc {{ color: #52525b; }}
+body.light .timeline-date {{ color: #71717a; }}
+body.light .timeline-company {{ color: #71717a; }}
+body.light .timeline-dot {{ border-color: #f8f8fc; }}
+body.light .header p {{ color: #71717a; }}
+body.light .controls-bar {{ background: #f8f8fcee; border-bottom-color: #d4d4d8; }}
+body.light .search-input {{
+  background: #e4e4e7;
+  border-color: #d4d4d8;
+  color: #1a1a2e;
+}}
+body.light .search-input::placeholder {{ color: #a1a1aa; }}
+body.light .year-select {{
+  background: #e4e4e7;
+  border-color: #d4d4d8;
+  color: #1a1a2e;
+}}
+body.light .theme-toggle {{
+  background: #e4e4e7;
+  border-color: #d4d4d8;
+  color: #52525b;
 }}
 .tab-bar {{
   position: sticky;
@@ -165,13 +261,62 @@ body {{
   z-index: 100;
   background: #0a0a0fee;
   backdrop-filter: blur(12px);
-  padding: 16px 20px;
+  padding: 16px 20px 8px;
   display: flex;
   gap: 8px;
   justify-content: center;
   flex-wrap: wrap;
   border-bottom: 1px solid #27272a;
 }}
+.controls-bar {{
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background: #0a0a0fee;
+  backdrop-filter: blur(12px);
+  padding: 8px 20px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #27272a;
+}}
+.search-input {{
+  background: #18181b;
+  border: 1px solid #27272a;
+  color: #e4e4e7;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 13px;
+  width: 200px;
+  outline: none;
+  transition: border-color 0.2s;
+}}
+.search-input:focus {{ border-color: #3b82f6; }}
+.search-input::placeholder {{ color: #52525b; }}
+.year-select {{
+  background: #18181b;
+  border: 1px solid #27272a;
+  color: #a1a1aa;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+}}
+.theme-toggle {{
+  background: #18181b;
+  border: 1px solid #27272a;
+  color: #a1a1aa;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  transition: all 0.2s;
+}}
+.theme-toggle:hover {{ background: #27272a; color: #e4e4e7; }}
 .tab {{
   background: #18181b;
   border: 1px solid #27272a;
@@ -244,7 +389,9 @@ body {{
   padding: 10px 40px 30px;
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease, max-height 0.4s ease;
+  max-height: 1000px;
+  overflow: hidden;
 }}
 .timeline-item.visible {{
   opacity: 1;
@@ -258,7 +405,16 @@ body {{
   left: 50%;
   text-align: left;
 }}
-.timeline-item.hidden {{ display: none; }}
+.timeline-item.hidden {{
+  opacity: 0;
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+}}
 .timeline-dot {{
   position: absolute;
   top: 18px;
@@ -282,6 +438,7 @@ body {{
   border-radius: 12px;
   padding: 20px;
   transition: border-color 0.3s;
+  position: relative;
 }}
 .timeline-content:hover {{
   border-color: var(--node-color);
@@ -321,11 +478,31 @@ body {{
   color: #f4f4f5;
   margin-bottom: 6px;
 }}
+.timeline-link {{
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+  transition: opacity 0.2s;
+}}
+.timeline-link:hover {{ opacity: 0.8; }}
 .timeline-desc {{
   color: #a1a1aa;
   font-size: 14px;
   line-height: 1.5;
 }}
+.permalink {{
+  color: #52525b;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.2s;
+  margin-left: auto;
+}}
+.timeline-content:hover .permalink {{
+  opacity: 1;
+}}
+.permalink:hover {{ color: #3b82f6; }}
 
 @media (max-width: 700px) {{
   .timeline::before {{ left: 20px; }}
@@ -344,6 +521,7 @@ body {{
     right: auto !important;
   }}
   .header h1 {{ font-size: 1.8rem; }}
+  .search-input {{ width: 140px; }}
 }}
 </style>
 </head>
@@ -354,6 +532,12 @@ body {{
 </div>
 <div class="tab-bar">
   {tabs}
+</div>
+<div class="controls-bar">
+  <input type="text" class="search-input" placeholder="Search..." id="searchInput">
+  <select class="year-select" id="yearFrom"><option value="">From</option>{year_options}</select>
+  <select class="year-select" id="yearTo"><option value="">To</option>{year_options_rev}</select>
+  <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">🌙</button>
 </div>
 <div class="filter-bar">
   <button class="filter active" data-min="all">All</button>
@@ -370,14 +554,22 @@ body {{
 const levels = ['low', 'medium', 'high', 'critical', 'inflection'];
 let activeCompany = 'all';
 let activeMin = 'all';
+let searchText = '';
+let yearFrom = '';
+let yearTo = '';
 
 function applyFilters() {{
   const minIdx = activeMin === 'all' ? 0 : levels.indexOf(activeMin);
+  const q = searchText.toLowerCase();
   document.querySelectorAll('.timeline-item').forEach(item => {{
     const companyMatch = activeCompany === 'all' || item.dataset.company === activeCompany;
     const impIdx = levels.indexOf(item.dataset.importance);
     const impMatch = impIdx >= minIdx;
-    if (companyMatch && impMatch) {{
+    const dateYear = item.dataset.date.substring(0, 4);
+    const yearMatch = (!yearFrom || dateYear >= yearFrom) && (!yearTo || dateYear <= yearTo);
+    const text = item.textContent.toLowerCase();
+    const searchMatch = !q || text.includes(q);
+    if (companyMatch && impMatch && yearMatch && searchMatch) {{
       item.classList.remove('hidden');
     }} else {{
       item.classList.add('hidden');
@@ -404,6 +596,47 @@ document.querySelectorAll('.filter').forEach(btn => {{
   }});
 }});
 
+document.getElementById('searchInput').addEventListener('input', e => {{
+  searchText = e.target.value;
+  applyFilters();
+}});
+
+document.getElementById('yearFrom').addEventListener('change', e => {{
+  yearFrom = e.target.value;
+  applyFilters();
+}});
+
+document.getElementById('yearTo').addEventListener('change', e => {{
+  yearTo = e.target.value;
+  applyFilters();
+}});
+
+// Theme toggle
+const toggle = document.getElementById('themeToggle');
+const saved = localStorage.getItem('theme');
+if (saved === 'light') {{ document.body.classList.add('light'); toggle.textContent = '☀️'; }}
+toggle.addEventListener('click', () => {{
+  document.body.classList.toggle('light');
+  const isLight = document.body.classList.contains('light');
+  toggle.textContent = isLight ? '☀️' : '🌙';
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+}});
+
+// Permalink click
+document.querySelectorAll('.permalink').forEach(a => {{
+  a.addEventListener('click', e => {{
+    if (navigator.clipboard) {{
+      navigator.clipboard.writeText(a.href);
+    }}
+  }});
+}});
+
+// Scroll to hash on load
+if (location.hash) {{
+  const el = document.querySelector(location.hash);
+  if (el) {{ el.classList.add('visible'); setTimeout(() => el.scrollIntoView({{ behavior: 'smooth', block: 'center' }}), 100); }}
+}}
+
 function observe() {{
   const items = document.querySelectorAll('.timeline-item:not(.hidden)');
   const observer = new IntersectionObserver((entries) => {{
@@ -418,7 +651,16 @@ function observe() {{
 observe();
 </script>
 </body>
-</html>"##, tabs = tabs_html, nodes = nodes_html)
+</html>"##,
+        tabs = tabs_html,
+        nodes = nodes_html,
+        year_options = year_options,
+        year_options_rev = {
+            let mut rev = years.clone();
+            rev.reverse();
+            rev.iter().map(|y| format!(r#"<option value="{y}">{y}</option>"#)).collect::<String>()
+        },
+    )
 }
 
 fn build(news_dir: &Path, out_dir: &Path) {
@@ -439,13 +681,62 @@ fn build(news_dir: &Path, out_dir: &Path) {
         }
     }
 
-    // Sort by date descending
     all_entries.sort_by(|a, b| b.date.cmp(&a.date));
 
     let html = generate_html(&all_entries);
     fs::create_dir_all(out_dir).expect("Cannot create dist/");
     fs::write(out_dir.join("index.html"), html).expect("Cannot write index.html");
     println!("Built {} entries → {}/index.html", all_entries.len(), out_dir.display());
+}
+
+fn new_entry(company: &str, news_dir: &Path) {
+    let file_path = news_dir.join(format!("{}.md", company));
+    if !file_path.exists() {
+        eprintln!("File not found: {}. Creating new file.", file_path.display());
+        fs::write(&file_path, format!("# {}\n", company.chars().next().unwrap().to_uppercase().to_string() + &company[1..])).ok();
+    }
+
+    let today = chrono::Local::now().format("%Y-%m-%d").to_string();
+
+    print!("Date [{}]: ", today);
+    io::stdout().flush().ok();
+    let mut date = String::new();
+    io::stdin().read_line(&mut date).ok();
+    let date = date.trim();
+    let date = if date.is_empty() { today } else { date.to_string() };
+
+    print!("Importance (low/medium/high/critical/inflection) [medium]: ");
+    io::stdout().flush().ok();
+    let mut importance = String::new();
+    io::stdin().read_line(&mut importance).ok();
+    let importance = importance.trim();
+    let importance = if importance.is_empty() { "medium" } else { importance };
+
+    print!("Headline: ");
+    io::stdout().flush().ok();
+    let mut headline = String::new();
+    io::stdin().read_line(&mut headline).ok();
+    let headline = headline.trim();
+    if headline.is_empty() {
+        eprintln!("Headline is required.");
+        std::process::exit(1);
+    }
+
+    print!("URL (optional): ");
+    io::stdout().flush().ok();
+    let mut url = String::new();
+    io::stdin().read_line(&mut url).ok();
+    let url = url.trim();
+
+    let mut block = format!("\n---\ndate: {}\nimportance: {}\nheadline: {}\n", date, importance, headline);
+    if !url.is_empty() {
+        block.push_str(&format!("url: {}\n", url));
+    }
+    block.push_str("---\n\nTODO: Add description here.\n");
+
+    let mut file = fs::OpenOptions::new().append(true).open(&file_path).expect("Cannot open file");
+    file.write_all(block.as_bytes()).expect("Cannot write to file");
+    println!("Added entry to {}", file_path.display());
 }
 
 fn main() {
@@ -468,8 +759,15 @@ fn main() {
                 let _ = request.respond(response);
             }
         }
+        "new" => {
+            let company = args.get(2).map(|s| s.as_str()).unwrap_or_else(|| {
+                eprintln!("Usage: ai-timeline new <company>");
+                std::process::exit(1);
+            });
+            new_entry(company, &news_dir);
+        }
         _ => {
-            eprintln!("Usage: ai-timeline [build|serve]");
+            eprintln!("Usage: ai-timeline [build|serve|new <company>]");
             std::process::exit(1);
         }
     }
