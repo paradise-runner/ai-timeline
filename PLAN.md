@@ -4,6 +4,8 @@
 
 A single-page website that tracks AI company news on a vertical timeline. Scrolling reveals nodes one by one. Each node is color-coded by importance. Tabs at the top let you filter by company or view everything on one unified timeline.
 
+A Rust CLI reads markdown files from `news/` and generates the static site.
+
 ## Who It's For
 
 Anyone following the AI landscape who wants a visual, chronological way to see what's happening — without doomscrolling Twitter or reading 15 newsletters.
@@ -33,12 +35,84 @@ Anyone following the AI landscape who wants a visual, chronological way to see w
 - Active tab is visually highlighted
 - Tab switching uses minimal vanilla JS (toggle CSS classes)
 
+## Content — Markdown News Files
+
+Each company has its own markdown file in the `news/` directory:
+
+```
+news/
+├── openai.md
+├── anthropic.md
+├── google.md
+├── meta.md
+├── xai.md
+├── mistral.md
+└── other.md
+```
+
+### Markdown Format
+
+Each file contains entries separated by `---`. Frontmatter-style metadata per entry:
+
+```markdown
+# OpenAI
+
+---
+date: 2025-01-20
+importance: critical
+headline: OpenAI launches o3
+---
+
+Next-generation reasoning model with significant improvements in math, coding, and scientific benchmarks. Available to Plus and Team subscribers.
+
+---
+date: 2025-01-10
+importance: high
+headline: ChatGPT hits 300M weekly users
+---
+
+OpenAI reports record usage numbers, driven by o1 launch and enterprise adoption.
+```
+
+Rules:
+- One file per company, named with the company slug
+- Entries are separated by `---`
+- Each entry starts with a YAML-like header block between `---` markers: `date`, `importance`, `headline`
+- Body text after the header is the description (supports markdown)
+- Company is derived from the filename, not repeated per entry
+- The `# Title` at the top of each file is the display name for tabs
+
 ## Technical Approach
 
 ### Stack
+- **Rust CLI** — reads `news/*.md`, parses entries, generates static HTML
 - **HTML** — semantic markup, data attributes for company/importance
 - **CSS** — layout, animations, theming, color coding
-- **Vanilla JS** — tab filtering only (show/hide nodes by `data-company`), scroll reveal fallback if CSS `animation-timeline` isn't supported enough
+- **Vanilla JS** — tab filtering + scroll reveal fallback
+
+### Rust CLI (`ai-timeline`)
+
+The CLI is the build tool. It:
+
+1. Scans `news/` for `.md` files
+2. Parses each file — extracts the company name from `# Title`, splits entries on `---`, parses date/importance/headline/description
+3. Merges all entries, sorts by date descending
+4. Renders `dist/index.html` using an embedded HTML template with inlined CSS and JS
+5. Copies any static assets to `dist/`
+
+```
+Usage:
+  ai-timeline build              # generate dist/index.html from news/*.md
+  ai-timeline build --out <dir>  # specify output directory
+  ai-timeline serve              # build + serve locally on :3000
+  ai-timeline new <company>      # scaffold a new entry in news/<company>.md
+```
+
+Key crates:
+- `pulldown-cmark` or manual parsing for the markdown/frontmatter split
+- `askama` or `minijinja` for HTML templating
+- Basic file I/O — no web framework needed for build mode
+- `tiny_http` or similar for the `serve` command
 
 ### CSS Scroll-Driven Animations
 - Use `animation-timeline: view()` where supported
@@ -69,48 +143,52 @@ Anyone following the AI landscape who wants a visual, chronological way to see w
 ### File Structure
 ```
 ai-timeline/
-├── index.html      # single page, all content
-├── style.css       # all styling, animations, colors
-├── script.js       # tab filtering + scroll reveal fallback
-├── data.js         # news entries as JS array (easy to update)
-├── PLAN.md         # this file
-└── README.md       # setup instructions
+├── news/                # content lives here
+│   ├── openai.md
+│   ├── anthropic.md
+│   ├── google.md
+│   ├── meta.md
+│   ├── xai.md
+│   ├── mistral.md
+│   └── other.md
+├── templates/           # HTML template(s) for the CLI
+│   └── index.html
+├── static/              # CSS + JS (embedded into output by CLI)
+│   ├── style.css
+│   └── script.js
+├── src/                 # Rust source
+│   └── main.rs
+├── dist/                # generated output (gitignored)
+│   └── index.html
+├── Cargo.toml
+├── PLAN.md
+└── README.md
 ```
-
-### Data Model
-Each news entry:
-```js
-{
-  date: "2025-01-20",
-  company: "openai",
-  importance: "critical",    // critical | high | medium | low
-  headline: "OpenAI launches o3",
-  description: "Next-gen reasoning model..."
-}
-```
-
-Entries live in `data.js` and get rendered into the DOM. This keeps content separate from structure and makes updates easy — just add a new object to the array.
 
 ## Design Decisions
 
-1. **No build tools.** Open `index.html` in a browser and it works.
-2. **No frameworks.** This is a content site, not an app. HTML/CSS do the heavy lifting.
-3. **Data in JS, not hardcoded HTML.** Makes it maintainable. One array to update.
-4. **Mobile-first.** Timeline collapses to single-column on narrow screens, nodes all on one side.
-5. **Dark theme default.** Feels right for a tech/AI tracker. Light mode via `prefers-color-scheme`.
+1. **Markdown for content.** Easy to author, diff, and review in PRs. No database.
+2. **One file per company.** Keeps things organized. Company name derived from file — no repetition.
+3. **Rust CLI generates static HTML.** Fast, single binary, no runtime deps. Just run `ai-timeline build`.
+4. **No frameworks.** The output is a single HTML file with inlined CSS/JS. Open it in a browser.
+5. **Mobile-first.** Timeline collapses to single-column on narrow screens, nodes all on one side.
+6. **Dark theme default.** Feels right for a tech/AI tracker. Light mode via `prefers-color-scheme`.
 
 ## Phases
 
 ### Phase 1 — Ship It
-- [ ] HTML structure with semantic timeline markup
+- [ ] Rust CLI: parse markdown files, generate HTML
+- [ ] HTML template with semantic timeline markup
 - [ ] CSS timeline layout with alternating nodes
 - [ ] Color system for importance levels
 - [ ] Scroll-reveal animations
-- [ ] Tab filtering
-- [ ] Seed with ~20 real news entries
+- [ ] Tab filtering (vanilla JS)
+- [ ] Seed with ~20 real news entries across companies
 - [ ] Responsive mobile layout
+- [ ] `serve` command for local preview
 
 ### Phase 2 — Polish
+- [ ] `new` command to scaffold entries
 - [ ] Smooth tab transitions
 - [ ] Search/filter by keyword
 - [ ] Date range filtering
@@ -118,6 +196,7 @@ Entries live in `data.js` and get rendered into the DOM. This keeps content sepa
 - [ ] Permalink to specific nodes
 
 ### Phase 3 — Maybe
-- [ ] RSS feed integration for auto-updates
-- [ ] Contributor submissions
+- [ ] GitHub Actions: build + deploy to Pages on push
+- [ ] RSS feed generation
+- [ ] Contributor submissions via PR
 - [ ] Embed links / source URLs on each node
