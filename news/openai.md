@@ -127,3 +127,75 @@ headline: o3-mini released for complex reasoning
 ---
 
 OpenAI launches o3-mini, a cost-efficient reasoning model that outperforms o1 on coding and STEM tasks. It offers three reasoning effort levels for flexibility.
+
+---
+date: 2025-02-27
+importance: high
+headline: GPT-4.5 released — last non-reasoning GPT
+---
+
+OpenAI releases GPT-4.5 (codenamed "Orion"), a large-scale model focused on unsupervised learning rather than chain-of-thought reasoning. Reviewers call it an incremental upgrade over GPT-4o, and it's later described as the end of an era for non-reasoning models.
+
+---
+date: 2025-03-12
+importance: medium
+headline: OpenAI adopts Model Context Protocol
+---
+
+OpenAI announces support for Anthropic's Model Context Protocol (MCP), joining a growing ecosystem of AI providers adopting the open standard for connecting AI systems to external tools and data sources.
+
+---
+date: 2025-04-14
+importance: high
+headline: GPT-4.1 released — developer-focused model
+---
+
+OpenAI releases GPT-4.1, GPT-4.1 mini, and GPT-4.1 nano, all with 1 million token context windows. The models are optimized for coding, instruction following, and long-context tasks, marking a pivot in OpenAI's release strategy toward developer needs.
+
+---
+date: 2025-04-16
+importance: critical
+headline: o3 and o4-mini reasoning models launched
+---
+
+OpenAI releases o3 and o4-mini, its next-generation reasoning models. o4-mini is the first OpenAI reasoning model to process both text and images, and both models can use tools autonomously during their chain-of-thought reasoning.
+
+---
+date: 2025-06-10
+importance: high
+headline: o3-pro — most capable reasoning model
+---
+
+OpenAI releases o3-pro, described as its most capable model yet, designed for challenging questions where reliability matters more than speed. It targets users willing to wait minutes for highly accurate responses.
+
+---
+date: 2025-08-05
+importance: high
+headline: GPT-OSS — OpenAI's first open-weight models
+---
+
+OpenAI releases GPT-OSS, a set of two open-weight models with reasoning capabilities. This marks OpenAI's first foray into open-source AI, two days before the GPT-5 launch.
+
+---
+date: 2025-08-07
+importance: inflection
+headline: GPT-5 launched — unified intelligence system
+---
+
+OpenAI launches GPT-5, a unified system containing fast and deep reasoning models with an automatic router. It subsumes previous model lines, offering PhD-level abilities across tasks. Sam Altman calls it "a significant step along the path to AGI."
+
+---
+date: 2025-09-30
+importance: medium
+headline: Sora 2 released for video generation
+---
+
+OpenAI launches Sora 2, the second generation of its text-to-video model, with an iOS app. All generated videos include a visible moving digital watermark to prevent misuse.
+
+---
+date: 2025-10-01
+importance: critical
+headline: OpenAI restructures as public benefit corporation
+---
+
+OpenAI completes its restructuring into a for-profit public benefit corporation, with the nonprofit Foundation retaining 26%, Microsoft holding 27%, and employees/investors holding 47%. A $6.6 billion share sale values the company at $500 billion.

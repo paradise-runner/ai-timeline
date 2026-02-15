@@ -63,3 +63,59 @@ headline: Grok 3 released with reasoning capabilities
 ---
 
 xAI launches Grok 3, trained on the Colossus supercluster, claiming top performance on math and science benchmarks. It includes a "think" mode for step-by-step reasoning.
+
+---
+date: 2025-02-17
+importance: high
+headline: Grok 3 launched with Think and DeepSearch
+---
+
+xAI releases Grok 3, trained on the expanded 200,000-GPU Colossus cluster with 10x more compute than Grok-2. It includes Think mode for step-by-step reasoning and DeepSearch for comprehensive internet research.
+
+---
+date: 2025-03-17
+importance: medium
+headline: xAI acquires Hotshot for video generation
+---
+
+xAI acquires Hotshot, a startup working on AI-powered video generation tools. The acquisition signals xAI's expansion beyond text and image generation into video AI.
+
+---
+date: 2025-03-28
+importance: critical
+headline: xAI acquires X Corp for $33 billion
+---
+
+Elon Musk announces xAI's acquisition of X Corp (formerly Twitter) in an all-stock transaction valuing X at $33 billion. The combined entity, X.AI Holdings Corp, merges social media with AI under one roof.
+
+---
+date: 2025-07-01
+importance: high
+headline: xAI raises $10B in debt and equity
+---
+
+Morgan Stanley announces $5 billion in debt raised for xAI alongside $5 billion in equity, with SpaceX investing $2 billion. The massive raise fuels xAI's infrastructure expansion.
+
+---
+date: 2025-07-14
+importance: medium
+headline: Grok for Government and DoD contract
+---
+
+xAI launches "Grok for Government" and receives a $200 million Department of Defense contract for military AI applications, alongside contracts awarded to Anthropic, Google, and OpenAI.
+
+---
+date: 2025-08-01
+importance: medium
+headline: Grok 2.5 released as source-available
+---
+
+xAI releases Grok 2.5 under a source-available license with commercial use restricted by an acceptable use policy, partially fulfilling Musk's earlier promise to open-source Grok-2.
+
+---
+date: 2025-11-17
+importance: high
+headline: Grok 4.1 released
+---
+
+xAI releases Grok 4.1, Grok 4.1 Thinking, and Grok 4.1 Fast, representing a major leap from Grok 3. The models become the latest stable release, competing directly with GPT-5 and Claude Opus 4.5.

@@ -63,3 +63,59 @@ headline: Mistral Small 3 — efficient on-device model
 ---
 
 Mistral releases Small 3, a 24B parameter model rivaling much larger models on common benchmarks. It's designed for on-device and edge deployment.
+
+---
+date: 2025-02-06
+importance: medium
+headline: Le Chat mobile apps launched
+---
+
+Mistral AI releases Le Chat on iOS and Android, bringing its AI assistant to mobile devices. A Pro subscription tier at $14.99/month provides access to advanced models and unlimited messaging.
+
+---
+date: 2025-04-01
+importance: medium
+headline: Mistral partners with CMA CGM
+---
+
+Mistral AI announces a €100 million partnership with shipping giant CMA CGM, marking a significant enterprise deal for the European AI startup and demonstrating industry demand for AI solutions.
+
+---
+date: 2025-06-01
+importance: high
+headline: Magistral reasoning models released
+---
+
+Mistral releases its Magistral line of reasoning models, entering the competitive reasoning model space alongside OpenAI's o-series and Google's Deep Think. Magistral Small is released as open-source under Apache 2.0.
+
+---
+date: 2025-08-01
+importance: medium
+headline: Codestral and Mistral Medium 3.1 updates
+---
+
+Mistral releases Codestral 25.08 for code generation and refreshes Mistral Medium 3.1 with improved tone and performance. The updates strengthen Mistral's position in developer-focused AI tools.
+
+---
+date: 2025-09-01
+importance: critical
+headline: Mistral raises €2B at €12B valuation
+---
+
+Mistral AI secures a €2 billion investment at a €12 billion valuation, including a €1.5 billion investment from Dutch semiconductor company ASML, which takes an 11% stake. The round cements Mistral as Europe's leading AI company.
+
+---
+date: 2025-12-01
+importance: high
+headline: Mistral Large 3 and Ministral 3 released
+---
+
+Mistral releases Mistral Large 3, a 675B parameter sparse mixture-of-experts model, alongside Ministral 3 in 3B, 8B, and 14B sizes with image understanding. Devstral 2 coding models also launch.
+
+---
+date: 2026-02-01
+importance: medium
+headline: Voxtral speech models launched
+---
+
+Mistral releases Voxtral Realtime for real-time speech transcription and Voxtral Mini Transcribe V2 for speech understanding, expanding beyond text into multimodal AI capabilities.

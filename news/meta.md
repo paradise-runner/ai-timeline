@@ -119,3 +119,35 @@ headline: Llama 4 training underway with massive compute
 ---
 
 Meta confirms Llama 4 is in training on a cluster of over 100,000 GPUs. Mark Zuckerberg announces plans to invest $60-65B in AI infrastructure during 2025.
+
+---
+date: 2025-04-05
+importance: critical
+headline: Llama 4 Scout and Maverick released
+---
+
+Meta releases Llama 4 with two models: Scout and Maverick. Built on a mixture-of-experts architecture, they represent Meta's most capable open models yet. Llama 4 continues Meta's strategy of advancing open-source AI.
+
+---
+date: 2025-04-15
+importance: medium
+headline: Meta AI assistant expands across platforms
+---
+
+Meta continues rolling out its AI assistant built on Llama across Facebook, WhatsApp, and Instagram, making AI chat accessible to billions of users across its social media ecosystem.
+
+---
+date: 2025-07-14
+importance: medium
+headline: Meta receives DoD AI contract
+---
+
+The U.S. Department of Defense awards AI contracts to Meta alongside xAI, Anthropic, Google, and OpenAI, signaling the military's increasing adoption of commercial AI systems.
+
+---
+date: 2025-09-01
+importance: high
+headline: Llama models dominate open-source ecosystem
+---
+
+Llama 4 models see massive adoption across the open-source community, with thousands of fine-tuned variants appearing on HuggingFace. Meta's open approach continues to shape the broader AI ecosystem.

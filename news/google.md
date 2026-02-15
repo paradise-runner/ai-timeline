@@ -119,3 +119,67 @@ headline: Gemini 2.0 Pro experimental release
 ---
 
 Google releases Gemini 2.0 Pro as an experimental model with improved coding and complex prompt performance. It becomes available through AI Studio and the Gemini API.
+
+---
+date: 2025-03-12
+importance: medium
+headline: Gemini Robotics announced
+---
+
+Google announces Gemini Robotics, a vision-language-action model based on the Gemini 2.0 family. It represents Google's push to connect large language models with physical robot control.
+
+---
+date: 2025-03-25
+importance: critical
+headline: Gemini 2.5 Pro — Google's most intelligent model
+---
+
+Google releases Gemini 2.5 Pro Experimental, described as its most intelligent AI model yet. It features enhanced reasoning and coding as a "thinking model" with chain-of-thought capabilities and a 1 million token context window.
+
+---
+date: 2025-05-20
+importance: high
+headline: Gemini 2.5 Flash becomes default at Google I/O
+---
+
+At Google I/O 2025, Gemini 2.5 Flash becomes the default model with faster responses, while 2.5 Pro gets Deep Think mode for complex tasks. Both models support native audio output.
+
+---
+date: 2025-06-17
+importance: high
+headline: Gemini 2.5 Pro and Flash go GA, Flash-Lite introduced
+---
+
+Google announces general availability for Gemini 2.5 Pro and Flash. They also introduce Gemini 2.5 Flash-Lite, optimized for speed and cost-efficiency, expanding the Gemini lineup.
+
+---
+date: 2025-06-25
+importance: medium
+headline: Gemini CLI — open-source terminal AI agent
+---
+
+Google introduces Gemini CLI, an open-source AI agent that brings Gemini capabilities directly to the terminal. It offers generous free usage limits for individual developers and supports coding, automation, and problem-solving.
+
+---
+date: 2025-10-01
+importance: high
+headline: Google partners with Anthropic on TPU compute
+---
+
+Anthropic announces a cloud partnership with Google giving it access to up to one million Google TPUs. The partnership will bring more than one gigawatt of AI compute capacity online by 2026.
+
+---
+date: 2025-11-18
+importance: critical
+headline: Gemini 3 Pro and Deep Think released
+---
+
+Google releases Gemini 3 Pro and 3 Deep Think, replacing 2.5 Pro and Flash as the most powerful Gemini models. The release marks another major generational leap in Google's AI capabilities.
+
+---
+date: 2025-12-17
+importance: medium
+headline: Gemini 3 Flash released
+---
+
+Google releases Gemini 3 Flash and 2.5 Flash-Lite, completing the Gemini 3 model family. Flash provides a fast, cost-effective option alongside the more powerful Pro and Deep Think models.
